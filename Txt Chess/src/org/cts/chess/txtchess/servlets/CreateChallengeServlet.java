@@ -178,4 +178,12 @@ public class CreateChallengeServlet extends ParameterHandlerServlet {
 		return "@chezz.challenge";
 	}
 
+	@Override
+	public String getExamples() {
+		return "@chezz.challenge ai black 5 (starts a game with ai level 5 and you are playing black)<br/>"
+		+"@chezz.challenge ai 6 (starts a game with ai level 6 and you are playing white)<br/>"
+		+"@chezz.challenge all black 1200 1400 (open challenge users having rating between 1200 to 1400 and you are playing white)<br/>"
+		+"@chezz.challenge wallace black (challenge 'wallace'(my username) for a game and you are playing black )";
+	}
+
 }

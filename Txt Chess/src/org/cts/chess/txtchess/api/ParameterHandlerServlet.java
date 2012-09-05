@@ -16,6 +16,7 @@ public abstract class ParameterHandlerServlet extends TxtWebServlet {
 		{
 			request.setAttribute("__help", getParameterDetector());
 			request.setAttribute("__serviceName", getServiceName());
+			request.setAttribute("__example", getExamples());
 			setJspPath("/jsp/common/HelpMessageHandler.jsp");
 			return;
 		}
@@ -56,4 +57,6 @@ public abstract class ParameterHandlerServlet extends TxtWebServlet {
 	public abstract String getServiceEndPoint();
 	
 	public abstract String getServiceName();
+	
+	public abstract String getExamples();
 }

@@ -31,7 +31,7 @@ public static Properties pushMessage(String mobileHash,String htmlMessage)
 {
 	if(mobileHash.startsWith("ai-"))
 		return new Properties();
-	mobileHash="85c8079f-d984-4970-8d86-47ba58099e49"; //used for testing purpose hash of my mobile
+	//mobileHash="85c8079f-d984-4970-8d86-47ba58099e49"; //used for testing purpose hash of my mobile
 	try{
 	//String params ="txtweb-message="+URLEncoder.encode(htmlMessage,"UTF-8")
       //      +"&txtweb-mobile="+URLEncoder.encode(mobileHash,"UTF-8")

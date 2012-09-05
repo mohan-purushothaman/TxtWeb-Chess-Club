@@ -97,4 +97,11 @@ public class ListGamesServlet extends ParameterHandlerServlet {
 		return "@chezz.games";
 	}
 
+	@Override
+	public String getExamples() {
+		return "@chezz.games (list all your currrent games, same as @chezz.games all)<br/>"
+		+"@chezz.games ai (list all your current games with computer)<br/>"
+		+"@chezz.games wallace (list all your current games against wallace)<br/>";
+	}
+
 }

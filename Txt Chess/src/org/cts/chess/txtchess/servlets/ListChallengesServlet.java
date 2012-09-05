@@ -80,4 +80,10 @@ public class ListChallengesServlet extends ParameterHandlerServlet {
 		return "@chezz.challenges";
 	}
 
+	@Override
+	public String getExamples() {
+		return "@chezz.challenges all (list all open challenges available to you)<br/>"
+		+"@chezz.challenges (list challenges made by other users specifically to you)";
+	}
+
 }

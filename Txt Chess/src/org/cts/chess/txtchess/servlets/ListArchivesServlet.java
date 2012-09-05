@@ -79,4 +79,11 @@ public class ListArchivesServlet extends ParameterHandlerServlet {
 		return "@chezz.history";
 	}
 
+	@Override
+	public String getExamples() {
+	return "@chezz.history (list all your finished games, same as @chezz.history all)<br/>"
+	+"@chezz.history ai (list all your finished games with computer)<br/>"
+	+"@chezz.history wallace (list all your finished games against wallace)";
+	}
+
 }

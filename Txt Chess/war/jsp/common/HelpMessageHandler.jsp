@@ -30,5 +30,14 @@ No Parameters
 <%
 }
 %>
+<%
+String examples=(String)request.getAttribute("__example");
+if(examples!=null){
+%>
+Ex.<br/>
+<%=examples %>
+<%
+}
+ %>
 </body>
 <%@include file="footer.jspf" %>

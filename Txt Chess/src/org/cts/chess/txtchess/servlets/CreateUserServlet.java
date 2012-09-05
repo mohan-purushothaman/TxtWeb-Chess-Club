@@ -79,6 +79,11 @@ public class CreateUserServlet extends ParameterHandlerServlet {
 			HttpServletResponse response) throws Exception {
 		return true;
 	}
+
+	@Override
+	public String getExamples() {
+		return "@chezz (username) (register you in the app with given user name)";
+	}
 	
 	
 }
