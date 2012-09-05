@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.5" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+  
+  <description>ServletContextListener</description>
+  <listener>
+    <listener-class>org.cts.chess.txtchess.gae.EMF</listener-class>
+  </listener>
+  
+ <servlet>
+		<servlet-name>TxtChezz</servlet-name>
+		<servlet-class>org.cts.chess.txtchess.servlets.TxtChezzServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>TxtChezz</servlet-name>
+		<url-pattern>/txtchezz</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>StatsServlet</servlet-name>
+		<servlet-class>org.cts.chess.txtchess.servlets.StatsServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>StatsServlet</servlet-name>
+		<url-pattern>/stats</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>CreateUser</servlet-name>
+		<servlet-class>org.cts.chess.txtchess.servlets.CreateUserServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CreateUser</servlet-name>
+		<url-pattern>/createUser</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>MoveServlet</servlet-name>
+		<servlet-class>org.cts.chess.txtchess.servlets.MoveServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MoveServlet</servlet-name>
+		<url-pattern>/moveServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ShowGame</servlet-name>
+		<servlet-class>org.cts.chess.txtchess.servlets.ShowGameServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ShowGame</servlet-name>
+		<url-pattern>/showGame</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ShowArchive</servlet-name>
+		<servlet-class>org.cts.chess.txtchess.servlets.ShowArchiveServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ShowArchive</servlet-name>
+		<url-pattern>/showArchive</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>CreateChallenge</servlet-name>
+		<servlet-class>org.cts.chess.txtchess.servlets.CreateChallengeServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CreateChallenge</servlet-name>
+		<url-pattern>/createChallenge</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>MoveListServlet</servlet-name>
+		<servlet-class>org.cts.chess.txtchess.servlets.MoveListServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MoveListServlet</servlet-name>
+		<url-pattern>/listMoves</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>ListChallenges</servlet-name>
+		<servlet-class>org.cts.chess.txtchess.servlets.ListChallengesServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ListChallenges</servlet-name>
+		<url-pattern>/listChallenges</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>AcceptChallenge</servlet-name>
+		<servlet-class>org.cts.chess.txtchess.servlets.AcceptChallengeServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AcceptChallenge</servlet-name>
+		<url-pattern>/acceptChallenge</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>ListGames</servlet-name>
+		<servlet-class>org.cts.chess.txtchess.servlets.ListGamesServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ListGames</servlet-name>
+		<url-pattern>/listGames</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ListArchives</servlet-name>
+		<servlet-class>org.cts.chess.txtchess.servlets.ListArchivesServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ListArchives</servlet-name>
+		<url-pattern>/listArchives</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>SetDefaultBoard</servlet-name>
+		<servlet-class>org.cts.chess.txtchess.servlets.DefaultBoardServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SetDefaultBoard</servlet-name>
+		<url-pattern>/setDeaultBoard</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ShowBoards</servlet-name>
+		<servlet-class>org.cts.chess.txtchess.servlets.ShowBoardsServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ShowBoards</servlet-name>
+		<url-pattern>/showBoards</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ShowBoard</servlet-name>
+		<servlet-class>org.cts.chess.txtchess.servlets.ShowBoardServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ShowBoard</servlet-name>
+		<url-pattern>/showBoard</url-pattern>
+	</servlet-mapping>
+	
+	
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+ <servlet>
+  <servlet-name>SystemServiceServlet</servlet-name>
+  <servlet-class>com.google.api.server.spi.SystemServiceServlet</servlet-class>
+  <init-param>
+   <param-name>services</param-name>
+   <param-value/>
+  </init-param>
+ </servlet>
+ <servlet-mapping>
+  <servlet-name>SystemServiceServlet</servlet-name>
+  <url-pattern>/_ah/spi/*</url-pattern>
+ </servlet-mapping>
+</web-app>

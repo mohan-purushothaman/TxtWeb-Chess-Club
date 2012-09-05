@@ -1,0 +1,4 @@
+<%
+manager.close();
+%>
+</html>

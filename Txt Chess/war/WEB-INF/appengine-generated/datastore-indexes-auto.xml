@@ -1,0 +1,11 @@
+<!-- Indices written at Wed, 5 Sep 2012 19:57:04 UTC -->
+
+<datastore-indexes>
+
+    <!-- Used 1 time in query history -->
+    <datastore-index kind="Challenge" ancestor="false" source="auto">
+        <property name="opponent" direction="asc"/>
+        <property name="max_rating" direction="asc"/>
+    </datastore-index>
+
+</datastore-indexes>
