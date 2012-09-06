@@ -21,7 +21,7 @@ public class ListArchivesServlet extends ParameterHandlerServlet {
 
 	@Override
 	public ParameterDetector createParameterDetector() {
-		return new ParameterDetector(new Parameter("List Type", null, "all",
+		return new ParameterDetector(new Parameter("List Type", "all",
 				true, new Condition() {
 					@Override
 					public boolean validate(String input) {

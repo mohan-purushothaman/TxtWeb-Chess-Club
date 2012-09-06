@@ -28,7 +28,7 @@ import com.valil.chesswebservice.Service;
 public class CreateChallengeServlet extends ParameterHandlerServlet {
 	@Override
 	public ParameterDetector createParameterDetector() {
-		return new ParameterDetector(new Parameter("Opponent Name", null, null,
+		return new ParameterDetector(new Parameter("Opponent Name", null,
 				false, new Condition() {
 
 					@Override
@@ -38,7 +38,7 @@ public class CreateChallengeServlet extends ParameterHandlerServlet {
 								.validateUserName(input));
 					}
 				}, "[all or AI or another username]"), new Parameter(
-				"Your Coin Color", new String[] { "white", "black" }, "white",
+				"Your Coin Color", "white",
 				true, new Condition() {
 
 					@Override
@@ -47,9 +47,9 @@ public class CreateChallengeServlet extends ParameterHandlerServlet {
 								|| input.equalsIgnoreCase("black");
 					}
 				}, "[white or black]"), new Parameter(
-				"Minimum Rating for Opponent or AI Difficult level(1 to 6)", null, "0", true,
+				"Minimum Rating for Opponent or AI Difficult level(1 to 6)", "0", true,
 				Condition.NUMBER, "[* or number or (1-6) if opponent is AI]"), new Parameter(
-				"Maximum Rating for Opponent", null, "4000", true,
+				"Maximum Rating for Opponent", "4000", true,
 				Condition.NUMBER, "[* or number]"));
 	}
 

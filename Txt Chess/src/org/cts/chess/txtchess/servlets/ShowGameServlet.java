@@ -70,6 +70,17 @@ public class ShowGameServlet extends TxtWebServlet {
 								+ TxtChessUtil.getTxtChess(game.reCreateBoard(), user)
 								+ "It's Your Turn, Reply with your Move<br/>"
 								);
+						request.setAttribute(
+								"__footer",
+								"<a href='./listMoves?gameId="
+										+ game.getId()
+										+ "'>Select Next Move from list</a><br/> <a href='./moveServlet?gameId="
+										+ game.getId() + "&txtweb-message="
+										+ drawMessage + "'>" + drawString
+										+ "</a>" +rejectDrawSring+
+										"<br/><a href='./moveServlet?gameId="
+										+ game.getId()
+										+ "&txtweb-message=resign'>Resign or Abort</a>");
 					} else {
 						request.setAttribute(
 								"__message",
@@ -77,6 +88,17 @@ public class ShowGameServlet extends TxtWebServlet {
 										+ TxtChessUtil.getTxtChess(ChessBoard
 												.getNewInstance(),
 												user));
+						request.setAttribute(
+								"__footer",
+								"<a href='./listMoves?gameId="
+										+ game.getId()
+										+ "'>Select Next Move from list</a><br/> <a href='./moveServlet?gameId="
+										+ game.getId() + "&txtweb-message="
+										+ drawMessage + "'>" + drawString
+										+ "</a>" +rejectDrawSring+
+										"<br/><a href='./moveServlet?gameId="
+										+ game.getId()
+										+ "&txtweb-message=resign'>Resign or Abort</a>");
 					}
 					request.setAttribute("__paramName", "Your Move");
 					request.setAttribute("__oldParamName", "gameId");
@@ -106,7 +128,7 @@ public class ShowGameServlet extends TxtWebServlet {
 						"__footer",
 						"<a href='./listMoves?gameId="
 								+ game.getId()
-								+ "'>List All Valid Moves</a><br/> <a href='./moveServlet?gameId="
+								+ "'>Select Next Move from list</a><br/> <a href='./moveServlet?gameId="
 								+ game.getId() + "&txtweb-message="
 								+ drawMessage + "'>" + drawString
 								+ "</a>" +rejectDrawSring+

@@ -79,7 +79,7 @@ public class ParameterDetector {
    }
    
    public static final ParameterDetector USERNAME_DETECTOR=new ParameterDetector(
-			new Parameter("User Name", null, null, false, new Condition() {
+			new Parameter("User Name", null, false, new Condition() {
 
 				@Override
 				public boolean validate(String input) {

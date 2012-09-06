@@ -16,9 +16,12 @@ if(builder.getClass().getName().equals(user.getBoardView())){
 %>
 Currently it is your Default Board
 <%
-}
+}else{
 %>
 <br/>
 <a href="./setDeaultBoard?txtweb-message=<%=builder.getClass().getName()%>">Set As Default Board</a>
+<%
+}
+%>
 </body>
 <%@include file="common/footer.jspf" %>

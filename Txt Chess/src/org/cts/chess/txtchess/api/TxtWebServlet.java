@@ -18,7 +18,7 @@ public abstract class TxtWebServlet extends HttpServlet {
 			throws IOException {
 		String mobileHash = request.getParameter("txtweb-mobile");
 		
-		 //if(mobileHash==null) { mobileHash="testingMobile"; }
+		 if(mobileHash==null) { mobileHash="testingMobile1"; }
 		 
 
 		String message = request.getParameter("txtweb-message");

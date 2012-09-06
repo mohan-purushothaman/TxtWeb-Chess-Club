@@ -21,7 +21,7 @@ public class ListGamesServlet extends ParameterHandlerServlet {
 
 	@Override
 	public ParameterDetector createParameterDetector() {
-		return new ParameterDetector(new Parameter("List Type", null, "all",
+		return new ParameterDetector(new Parameter("List Type", "all",
 				true, new Condition() {
 					@Override
 					public boolean validate(String input) {
@@ -68,7 +68,7 @@ public class ListGamesServlet extends ParameterHandlerServlet {
 				}
 				else if("all".equalsIgnoreCase(option))
 				{
-					ChessUser opponent=DB_Util.findUserByUserName(manager, mobileHash.equals(g.getWhite())?g.getBlack():g.getWhite());
+					ChessUser opponent=manager.find(ChessUser.class, mobileHash.equals(g.getWhite())?g.getBlack():g.getWhite());
 					option=opponent.getUserName();
 				}
 				

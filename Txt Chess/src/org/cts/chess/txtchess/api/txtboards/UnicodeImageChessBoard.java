@@ -48,7 +48,7 @@ public class UnicodeImageChessBoard extends AbstractTxtChessBuilder {
 	
 	@Override
 	public String getName() {
-		return "Unicode image ChessBoard( for High-End mobile )";
+		return "Image ChessBoard( for High-End mobile )";
 	}
 
 	@Override

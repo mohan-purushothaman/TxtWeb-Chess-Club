@@ -51,7 +51,8 @@ public class ChessUser {
 		this.protocol = protocol;
 		Protocol p = Protocol.getProtocol(protocol);
 
-		boardView = SimpleTxtChessBoard2.class.getName();
+		boardView = UnicodeImageChessBoard.class.getName();
+		/* making unicode chessboard as standard
 		if(p==null)
 			return;
 		switch (p) {
@@ -75,6 +76,7 @@ public class ChessUser {
 			break;
 		}
 		}
+		*/
 	}
 
 	public String getMobileHash() {

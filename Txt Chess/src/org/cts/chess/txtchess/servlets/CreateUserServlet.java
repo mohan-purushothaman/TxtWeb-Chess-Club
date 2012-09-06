@@ -32,6 +32,7 @@ public class CreateUserServlet extends ParameterHandlerServlet {
 					manager.persist(new ChessUser(mobileHash, message.get(0)
 							.toLowerCase(), 1200,request.getParameter("txtweb-protocol")));
 					transaction.commit();
+					request.setAttribute("__message", "Currently Image Chessboard is your default board. Please change default board, if you are facing any issues ");
 					}
 					catch(Exception e)
 					{

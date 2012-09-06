@@ -21,7 +21,7 @@ public class ListChallengesServlet extends ParameterHandlerServlet {
 	@Override
 	public ParameterDetector createParameterDetector() {
 		return new ParameterDetector(
-				new Parameter("'all' or EMPTY", null, null, true,
+				new Parameter("'all' or EMPTY", null, true,
 						Condition.DEFAULT,
 						"all to see open challenges or empty to see challenges specific to you"));
 	}
