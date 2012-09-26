@@ -1,5 +1,10 @@
 package org.cts.chess.txtchess.api.txtboards;
 
+/**
+ * See getDescription Method
+ *@author Mohan Purushothaman <mohan.purushothaman.88@gmail.com>
+ *
+ */
 
 public class UnicodeImageChessBoard3 extends UnicodeImageChessBoard2 {
 	

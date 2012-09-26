@@ -10,7 +10,12 @@ import javax.jdo.annotations.PrimaryKey;
 
 import org.cts.chess.engine.ChessBoard;
 import org.cts.chess.engine.Move;
-
+/**
+ * Entity class for table Game
+ * 
+ * @author Mohan Purushothaman <mohan.purushothaman.88@gmail.com>
+ *
+ */
 
 @PersistenceCapable(identityType = IdentityType.APPLICATION)
 public class Game {

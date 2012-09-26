@@ -4,8 +4,9 @@ import java.util.List;
 
 
 /**
+ * Simple exception aiming at providing useful info to txtweb user which parameter is not present in missing
  *
- * @author Mohan
+ * @author Mohan Purushothaman <mohan.purushothaman.88@gmail.com>
  */
 @SuppressWarnings("serial")
 public class ParameterNotPresentException extends Exception{

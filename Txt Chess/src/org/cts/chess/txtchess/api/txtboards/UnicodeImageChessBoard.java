@@ -4,6 +4,11 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.cts.chess.txtchess.api.AbstractTxtChessBuilder;
+/**
+ * See getDescription Method
+ *@author Mohan Purushothaman <mohan.purushothaman.88@gmail.com>
+ *
+ */
 
 public class UnicodeImageChessBoard extends AbstractTxtChessBuilder {
 	private final static List<Character> charArray=Arrays.asList(new Character[]{'K','Q','R','B','N','P','k','q','r','b','n','p'});

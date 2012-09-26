@@ -9,6 +9,14 @@ import javax.servlet.http.*;
 import org.cts.chess.txtchess.gae.EMF;
 import org.cts.chess.txtchess.gae.db.ChessUser;
 
+/**
+ * A basic TxtWeb Servlet which can handle single word message . 
+ * Basic class for all txtweb services with authentication, it will verify all requests with TxtWeb
+ * 
+ * @author Mohan Purushothaman <mohan.purushothaman.88@gmail.com>
+ *
+ */
+
 @SuppressWarnings("serial")
 public abstract class TxtWebServlet extends HttpServlet {
 
@@ -21,7 +29,6 @@ public abstract class TxtWebServlet extends HttpServlet {
 
 		// if(mobileHash==null) { mobileHash="testingMobile1"; }
 		try {
-			try {
 				if (!TxtWebApiUtil.isAuthenticatedRequest(request)) {
 					throw new Exception("Unauthorized Request");
 					/*
@@ -29,9 +36,7 @@ public abstract class TxtWebServlet extends HttpServlet {
 					 * response.sendError(403); return; 
 					 */
 				}
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+			
 			String message = request
 					.getParameter(TxtWebApiUtil.TXTWEB_MESSAGE_PARAM);
 			if (message == null) {

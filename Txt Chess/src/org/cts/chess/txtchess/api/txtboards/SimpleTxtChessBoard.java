@@ -2,6 +2,11 @@ package org.cts.chess.txtchess.api.txtboards;
 
 import org.cts.chess.txtchess.api.AbstractTxtChessBuilder;
 
+/**
+ * See getDescription Method
+ *@author Mohan Purushothaman <mohan.purushothaman.88@gmail.com>
+ *
+ */
 public class SimpleTxtChessBoard extends AbstractTxtChessBuilder {
 	
 	@Override

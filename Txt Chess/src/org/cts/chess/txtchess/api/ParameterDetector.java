@@ -8,14 +8,11 @@ import java.util.Queue;
 
 import org.cts.chess.txtchess.servlets.TxtChessUtil;
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /**
+ * A detector which helps to parse parameters to txtweb service (Support class for ParameterHandlerServlet)
  *
- * @author Mohan
+ * @author Mohan Purushothaman <mohan.purushothaman.88@gmail.com>
  */
 public class ParameterDetector {
     Parameter[] parameters;
@@ -31,6 +28,8 @@ public class ParameterDetector {
             else
             {
                 if(canWarn) {
+                	//a necessary precondition 
+                	//because we can't be sure whether current param is optional or nonoptional without this condition
                     throw new RuntimeException("Optional parameters shouldn't come before NonOptional Perameters");
                 }
             }

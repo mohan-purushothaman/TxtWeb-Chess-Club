@@ -1,13 +1,10 @@
 package org.cts.chess.txtchess.api;
 
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 /**
+ * Respresents a parameter to a txtweb service ( support class for ParameterHandlerServlet )
  * 
- * @author Mohan
+ * @author Mohan Purushothaman <mohan.purushothaman.88@gmail.com>
  */
 public class Parameter {
 

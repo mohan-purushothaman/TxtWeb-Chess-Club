@@ -2,6 +2,14 @@ package org.cts.chess.txtchess.api;
 
 import java.util.List;
 
+/**
+ * 
+ * @author Mohan Purushothaman <mohan.purushothaman.88@gmail.com>
+ *
+ * Common class to list Items to users in segments(support class for ListIteratorHandler.jsp)
+ * It Segments total items and shows users only a part with next and previous links
+ */
+
 public abstract class ListIterator<E> {
 private List<E> list;
 private int startIndex;
@@ -41,7 +49,7 @@ public String createListString()
 	{
 		String link=getRowLink(e);
 		if(link!=null){
-		sb.append(link).append("<br/><br/>");
+		sb.append("<br/>").append(link).append("<br/>");
 		}
 	}
 	sb.append(footer);

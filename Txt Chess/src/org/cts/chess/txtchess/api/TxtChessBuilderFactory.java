@@ -8,6 +8,11 @@ import org.cts.chess.txtchess.api.txtboards.SimpleTxtChessBoard;
 import org.cts.chess.txtchess.api.txtboards.SimpleTxtChessBoard2;
 import org.cts.chess.txtchess.api.txtboards.UnicodeImageChessBoard;
 
+/**
+ * Factory class for different type of chess boards
+ * 
+ */
+
 public class TxtChessBuilderFactory {
 	private static final List<AbstractTxtChessBuilder> list=new LinkedList<AbstractTxtChessBuilder>();;
 	static{

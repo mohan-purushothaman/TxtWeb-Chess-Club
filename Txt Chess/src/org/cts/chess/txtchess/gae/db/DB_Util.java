@@ -12,6 +12,13 @@ import org.cts.chess.engine.ChessBoard.Result;
 import org.cts.chess.txtchess.servlets.EloRating;
 import org.cts.chess.txtchess.servlets.TxtChessUtil;
 
+/**
+ * Util class having business logics of DB operations
+ * 
+ * @author Mohan Purushothaman <mohan.purushothaman.88@gmail.com>
+ *
+ */
+
 public class DB_Util {
 	public static final char DELIMITER=',';
 	public static enum Protocol {

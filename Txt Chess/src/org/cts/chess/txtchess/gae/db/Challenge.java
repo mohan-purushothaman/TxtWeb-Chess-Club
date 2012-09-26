@@ -6,7 +6,11 @@ import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
-
+/**
+ * Entity class for Table Challenge
+ * @author Mohan
+ *
+ */
 @PersistenceCapable(identityType = IdentityType.APPLICATION)
 public class Challenge {
 @PrimaryKey

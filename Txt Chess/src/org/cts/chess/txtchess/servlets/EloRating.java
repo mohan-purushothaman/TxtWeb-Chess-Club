@@ -3,7 +3,12 @@ package org.cts.chess.txtchess.servlets;
 import org.cts.chess.engine.ChessBoard.Result;
 import org.cts.chess.engine.ChessBoard.Status;
 import org.cts.chess.txtchess.gae.db.ChessUser;
-
+/**
+ * Plain and basic implementation of Elo Rating algorithm
+ * 
+ * @author Mohan Purushothaman <mohan.purushothaman.88@gmail.com>
+ *
+ */
 public class EloRating {
   
     public static final int K = 32;
@@ -28,6 +33,7 @@ public class EloRating {
             }
         else if(result.getStatus()==Status.DRAW)
         {
+        	//For draw favor Black (it is not Elo standard)
         	white.setRating(white.getRating()+1);
         	black.setRating(black.getRating()+2);
         }

@@ -2,7 +2,12 @@ package org.cts.chess.txtchess.api.txtboards;
 
 import org.cts.chess.engine.ChessBoard;
 import org.cts.chess.txtchess.api.AbstractTxtChessBuilder;
-
+	
+/**
+ * See getDescription Method
+ *@author Mohan Purushothaman <mohan.purushothaman.88@gmail.com>
+ *
+ */
 public class FENChessBoard extends AbstractTxtChessBuilder {
 
 	@Override
@@ -12,37 +17,31 @@ public class FENChessBoard extends AbstractTxtChessBuilder {
 
 	@Override
 	public String getChessCoinString(Character coin) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getRankStart(int rank) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getRankEnd(int rank) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getHeader() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getHeaderAndFooterSpace() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getFooter() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

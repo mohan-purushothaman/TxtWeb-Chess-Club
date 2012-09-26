@@ -16,6 +16,12 @@ import org.cts.chess.txtchess.gae.db.ChessUser;
 import org.cts.chess.txtchess.gae.db.Game;
 import org.cts.chess.txtchess.gae.db.GamesArchive;
 
+/**
+ * Util class handling creation of alert messages
+ * 
+ * @author Mohan Purushothaman <mohan.purushothaman.88@gmail.com>
+ *
+ */
 public class TxtChessUtil {
 	public static boolean pushMessage(EntityManager manager,
 			String destinationMobileHash,String currentPlayer, Game game) {

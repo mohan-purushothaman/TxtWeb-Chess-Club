@@ -9,10 +9,14 @@ import javax.jdo.annotations.PrimaryKey;
 import javax.jdo.annotations.Unique;
 
 import org.cts.chess.txtchess.api.AbstractTxtChessBuilder;
-import org.cts.chess.txtchess.api.txtboards.SimpleTxtChessBoard2;
 import org.cts.chess.txtchess.api.txtboards.UnicodeImageChessBoard;
 import org.cts.chess.txtchess.gae.db.DB_Util.Protocol;
-
+/**
+ * Entity class for table ChessUser
+ * 
+ * @author Mohan Purushothaman <mohan.purushothaman.88@gmail.com>
+ *
+ */
 @PersistenceCapable(identityType = IdentityType.APPLICATION)
 public class ChessUser {
 	@PrimaryKey

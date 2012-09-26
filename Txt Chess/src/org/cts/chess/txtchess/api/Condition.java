@@ -2,10 +2,11 @@ package org.cts.chess.txtchess.api;
 
 
 /**
- *
- * @author Mohan
+ * A condition interface which is being used to validate Parameters
+ * @author Mohan Purushothaman <mohan.purushothaman.88@gmail.com>
  */
 public interface Condition {
+	
     Condition DEFAULT=new Condition() {
 
         @Override

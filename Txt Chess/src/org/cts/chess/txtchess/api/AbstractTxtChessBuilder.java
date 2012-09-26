@@ -5,7 +5,10 @@ import java.util.Arrays;
 import org.cts.chess.engine.ChessBoard;
 import org.cts.chess.engine.Move;
 
-
+/**
+ *	Base builder class for building different chess boards, to support different devices
+ *	@author Mohan Purushothaman <mohan.purushothaman.88@gmail.com>
+ */
 public abstract class AbstractTxtChessBuilder {
 	public String getName()
 	{

@@ -3,6 +3,13 @@ import java.util.List;
 
 import javax.servlet.http.*;
 
+/**
+ *  A Abstract extension of TxtWebServlet, this servlet can detect and parse complex message parameters by using ParamerDetector
+ * 
+ * @author Mohan Purushothaman <mohan.purushothaman.88@gmail.com>
+ *
+ */
+
 @SuppressWarnings("serial")
 public abstract class ParameterHandlerServlet extends TxtWebServlet {
 	

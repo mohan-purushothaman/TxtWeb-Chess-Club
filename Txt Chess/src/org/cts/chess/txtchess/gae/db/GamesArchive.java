@@ -9,7 +9,12 @@ import javax.jdo.annotations.PrimaryKey;
 import org.cts.chess.engine.ChessBoard;
 import org.cts.chess.engine.Move;
 import org.cts.chess.engine.ChessBoard.Result;
-
+/**
+ * Entity class for table GamesArchive
+ * 
+ * @author Mohan Purushothaman <mohan.purushothaman.88@gmail.com>
+ *
+ */
 @PersistenceCapable(identityType = IdentityType.APPLICATION)
 public class GamesArchive {
 	@PrimaryKey	
