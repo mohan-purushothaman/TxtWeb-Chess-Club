@@ -7,7 +7,7 @@ ListIterator<?> listIterator=(ListIterator<?>)request.getAttribute("__listIterat
 
 <%=listIterator.getHeader()%>
 <br />
-<%=listIterator.getListString() %>
+<%=listIterator.getListString() %> <br/>
 <%=listIterator.getCallbackURLSegment() %>
 </body>
 <%@include file="footer.jspf" %>

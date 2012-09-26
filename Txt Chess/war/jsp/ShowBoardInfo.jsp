@@ -19,7 +19,7 @@ Currently it is your Default Board
 }else{
 %>
 <br/>
-<a href="./setDeaultBoard?txtweb-message=<%=builder.getClass().getName()%>">Set As Default Board</a>
+<a href="/setDeaultBoard?txtweb-message=<%=builder.getClass().getName()%>">Set As Default Board</a>
 <%
 }
 %>

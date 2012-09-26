@@ -3,7 +3,7 @@
 <body>
 Please provide Username for using Chezz 
 <br />
-<form action='./createUser'>
+<form action='/createUser'>
 UserName<input type='text' name='txtweb-message' />
 <input type='submit' value='submit'/>
 </form>

@@ -13,7 +13,7 @@ for(AbstractTxtChessBuilder builder:list){
 		defaultBoard=true;
 			}
 %>
-<a href="./showBoard?board=<%= builder.getClass().getName()%>" ><%=builder.getName()+(defaultBoard?" ( Current Board )":"") %></a><br/><br/>
+<a href="/showBoard?board=<%= builder.getClass().getName()%>" ><%=builder.getName()+(defaultBoard?" ( Current Board )":"") %></a><br/><br/>
 <%
 }
 %>
