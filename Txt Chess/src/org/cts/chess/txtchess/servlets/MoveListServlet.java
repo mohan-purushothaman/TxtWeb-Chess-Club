@@ -52,7 +52,7 @@ public class MoveListServlet extends TxtWebServlet{
 
 					@Override
 					public String getRowLink(Move move) {
-						return "<a href='./moveServlet?gameId="+gameId+"&txtweb-message="+move.getSAN(board)+"'>"+move.getInfo(board)+"</a>";
+						return "<a href='/moveServlet?gameId="+gameId+"&txtweb-message="+move.getSAN(board)+"'>"+move.getInfo(board)+"</a>";
 					}
 			
 				}

@@ -129,10 +129,14 @@ public class CreateChallengeServlet extends ParameterHandlerServlet {
 			if(opponent!=null)
 			{
 				ChessUser currentUser=manager.find(ChessUser.class, user);
+				//TxtWebApiUtil.pushMessage(opponent, 
+				//	TxtChessUtil.createMoveNotificationMessage("You have been challenged by "+currentUser.getUserName()+" ("+currentUser.getRating() +")",
+					//		"Your color is "+challenge.getOpponentColor(), "<br/><br/><a href='/acceptChallenge?challengeId="+challenge.getId()+"'>Accept Challenge</a><br/>" +
+						//			"<a href='/acceptChallenge?challengeId="+challenge.getId()+"&txtweb-message=reject'>Reject Challenge</a>"));
 				TxtWebApiUtil.pushMessage(opponent, 
-					TxtChessUtil.createMoveNotificationMessage("You have been challenged by "+currentUser.getUserName()+" ("+currentUser.getRating() +")",
-							"Your color is "+challenge.getOpponentColor(), "<br/><br/><a href='./acceptChallenge?challengeId="+challenge.getId()+"'>Accept Challenge</a><br/>" +
-									"<a href='./acceptChallenge?challengeId="+challenge.getId()+"&txtweb-message=reject'>Reject Challenge</a>"));
+							TxtChessUtil.createMoveNotificationMessage("You have been challenged by "+currentUser.getUserName()+" ("+currentUser.getRating() +")",
+							"Your color is "+challenge.getOpponentColor(), "<br/><br/>"+("Please send '@chezz.challenges' to see accept or reject the challenge")));
+				
 			}
 			
 			request.setAttribute("__message", "Challenge is created, You will be notified if challenge is accepted");

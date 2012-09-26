@@ -165,7 +165,7 @@ public class DB_Util {
 				+ GamesArchive.class.getName() + " c where c.black='" + userMobileHash
 				+ "'");
 		for (Object obj : query2.getResultList()) {
-			if (obj instanceof Game) {
+			if (obj instanceof GamesArchive) {
 				GamesArchive game = (GamesArchive) obj;
 				if (isAi && TxtChessUtil.isAI_Game(game)) {
 					result.add(game);
@@ -205,6 +205,7 @@ public class DB_Util {
 		return result;
 	}
 
+	@SuppressWarnings("finally")
 	public static Game acceptChallenge(EntityManager manager, Long challengeId,
 			String mobileHash, boolean reject) throws Exception {
 
@@ -215,21 +216,24 @@ public class DB_Util {
 
 		if (reject) {
 			if (mobileHash.equals(challenge.getOpponent())) {
+				String msg="";
 				EntityTransaction transaction = manager.getTransaction();
 				try {
 					transaction.begin();
 					manager.remove(challenge);
 					transaction.commit();
-					throw new Exception(
-							"You have rejected your opponent challenge");
+					msg="You have rejected your opponent challenge";
 				} catch (Exception e) {
 					try {
 						transaction.rollback();
 					} catch (Exception ex) {
 						ex.printStackTrace();
 					}
-					throw new Exception(
-							"unable to reject the challenge (Internal error)");
+					msg=
+							"unable to reject the challenge (Internal error)";
+				}
+				finally{
+					throw new Exception(msg);
 				}
 			} else {
 				throw new Exception(

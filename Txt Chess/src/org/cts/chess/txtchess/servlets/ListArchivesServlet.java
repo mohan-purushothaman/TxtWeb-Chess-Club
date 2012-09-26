@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.cts.chess.txtchess.api.Condition;
+import org.cts.chess.txtchess.api.ListIterator;
 import org.cts.chess.txtchess.api.Parameter;
 import org.cts.chess.txtchess.api.ParameterDetector;
 import org.cts.chess.txtchess.api.ParameterHandlerServlet;
@@ -41,27 +42,50 @@ public class ListArchivesServlet extends ParameterHandlerServlet {
 		try {
 			ChessUser user = manager.find(ChessUser.class, mobileHash);		
 			List<GamesArchive> games=DB_Util.getArchivedGames(manager, user.getMobileHash(),option);
-			/*String startIndexString=request.getParameter("startIndex");
-			ListIterator< Game> games= new ListIterator<Game>("Games currently Playing",games,startIndexString==null?1:Integer.parseInt(startIndexString),"/listGames?txtweb-message="+option+"&","") {
+			String startIndexString=request.getParameter("startIndex");
+			ListIterator<GamesArchive> gamesIterator= new ListIterator<GamesArchive>("all".equalsIgnoreCase(option)?"Game History":"Game History Against "+option,games,startIndexString==null?1:Integer.parseInt(startIndexString),"/listArchives?txtweb-message="+option+"&","") {
 
 				@Override
-				public String getRowLink(Game game) {
+				public String getRowLink(GamesArchive game) {
+					
+					
+					
 					boolean isWhite=mobileHash.equals(game.getWhite());
 					String op=isWhite?game.getBlack():game.getWhite();
 					ChessUser opponent = manager.find(ChessUser.class,op);
 					String opponentName=TxtChessUtil.isAI_Game(game)?op:opponent.getUserName();
-					return "<a href='./showGame?txtweb-message="+game.getId()+"'>Against "+ opponentName
-							+ "( " +((isWhite==(game.getMovesCount()%2==0))?"Your":"Opponent") + " ["+((game.getMovesCount()%2==0)?"White":"Black" )+"] Turn )"
+					
+				
+					String result="Not Known";
+					switch(game.getResult().getStatus())
+					{
+					case WHITE_WINS:
+					{
+						result=isWhite?"Won":"Lost";
+						break;
+					}
+					case BLACK_WINS:
+					{
+						result=isWhite?"Lost":"Won";
+						break;
+					}
+					case DRAW:
+					{
+						result="Drawn";
+						break;
+					}
+					}
+					
+					
+					return "<a href='/showArchive?gameId="+game.getId()+"'>" +
+							result+" Against "+opponentName+" in "+game.getMovesCount() +" Moves ("+game.getResult().getInfoString() +")"
 							+"</a>";
 				}
 			};
 			
-			request.setAttribute("__listIterator",games );
+			request.setAttribute("__listIterator",gamesIterator );
 			setJspPath("/jsp/common/ListIteratorHandler.jsp");
-			*/
-			request.setAttribute("__header","all".equalsIgnoreCase(option)?"Game History":"Game History Against "+option);
-			request.setAttribute("__games", games);
-			setJspPath("/jsp/ListArchives.jsp");
+			
 			} finally {
 			manager.close();
 		}

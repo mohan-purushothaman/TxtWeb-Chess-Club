@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.cts.chess.txtchess.api.Condition;
+import org.cts.chess.txtchess.api.ListIterator;
 import org.cts.chess.txtchess.api.Parameter;
 import org.cts.chess.txtchess.api.ParameterDetector;
 import org.cts.chess.txtchess.api.ParameterHandlerServlet;
@@ -41,24 +42,7 @@ public class ListGamesServlet extends ParameterHandlerServlet {
 		try {
 			ChessUser user = manager.find(ChessUser.class, mobileHash);		
 			List<Game> games=DB_Util.getCurrentGames(manager, user.getMobileHash(),option);
-			/*String startIndexString=request.getParameter("startIndex");
-			ListIterator< Game> games= new ListIterator<Game>("Games currently Playing",games,startIndexString==null?1:Integer.parseInt(startIndexString),"/listGames?txtweb-message="+option+"&","") {
-
-				@Override
-				public String getRowLink(Game game) {
-					boolean isWhite=mobileHash.equals(game.getWhite());
-					String op=isWhite?game.getBlack():game.getWhite();
-					ChessUser opponent = manager.find(ChessUser.class,op);
-					String opponentName=TxtChessUtil.isAI_Game(game)?op:opponent.getUserName();
-					return "<a href='./showGame?txtweb-message="+game.getId()+"'>Against "+ opponentName
-							+ "( " +((isWhite==(game.getMovesCount()%2==0))?"Your":"Opponent") + " ["+((game.getMovesCount()%2==0)?"White":"Black" )+"] Turn )"
-							+"</a>";
-				}
-			};
 			
-			request.setAttribute("__listIterator",games );
-			setJspPath("/jsp/common/ListIteratorHandler.jsp");
-			*/
 			if(games.size()==1)
 			{
 				Game g=games.get(0);
@@ -76,10 +60,25 @@ public class ListGamesServlet extends ParameterHandlerServlet {
 				setJspPath("/showGame?gameId="+g.getId());
 				return;
 			}
+		
 			
-			request.setAttribute("__header","all".equalsIgnoreCase(option)?"All Current Games":"All Games against "+option);
-			request.setAttribute("__games", games);
-			setJspPath("/jsp/ListGames.jsp");
+			String startIndexString=request.getParameter("startIndex");
+			ListIterator< Game> gamesIterator= new ListIterator<Game>("Games currently Playing",games,startIndexString==null?1:Integer.parseInt(startIndexString),"/listGames?txtweb-message="+option+"&","") {
+
+				@Override
+				public String getRowLink(Game game) {
+					boolean isWhite=mobileHash.equals(game.getWhite());
+					String op=isWhite?game.getBlack():game.getWhite();
+					ChessUser opponent = manager.find(ChessUser.class,op);
+					String opponentName=TxtChessUtil.isAI_Game(game)?op:opponent.getUserName();
+					return "<a href='/showGame?gameId="+game.getId()+"'>Against "+ opponentName
+							+ "( " +((isWhite==(game.getMovesCount()%2==0))?"Your":"Opponent") + " ["+((game.getMovesCount()%2==0)?"White":"Black" )+"] Turn )"
+							+"</a>";
+				}
+			};
+			
+			request.setAttribute("__listIterator",gamesIterator );
+			setJspPath("/jsp/common/ListIteratorHandler.jsp");
 			} finally {
 			manager.close();
 		}

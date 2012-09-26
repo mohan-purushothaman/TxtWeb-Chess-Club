@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.cts.chess.txtchess.api.Condition;
+import org.cts.chess.txtchess.api.ListIterator;
 import org.cts.chess.txtchess.api.Parameter;
 import org.cts.chess.txtchess.api.ParameterDetector;
 import org.cts.chess.txtchess.api.ParameterHandlerServlet;
@@ -37,7 +38,7 @@ public class ListChallengesServlet extends ParameterHandlerServlet {
 			boolean listAll = "all".equalsIgnoreCase(option);
 			List<Challenge> challenges = DB_Util.getChallenges(manager,
 					user.getMobileHash(), user.getRating(), listAll);
-			/*String startIndexString = request.getParameter("startIndex");
+			String startIndexString = request.getParameter("startIndex");
 			ListIterator<Challenge> challengeIterator = new ListIterator<Challenge>(
 					listAll ? "Open Challenges" : "Challenges Specific To You",
 					challenges, startIndexString == null ? 1
@@ -50,21 +51,15 @@ public class ListChallengesServlet extends ParameterHandlerServlet {
 					ChessUser opponent = manager.find(ChessUser.class,
 							challenge.getCreatedBy());
 
-					return "<a href='./acceptChallenge?challengeId="
+					return "<a href='/acceptChallenge?challengeId="
 							+ challenge.getId() + "'> Play as "
 							+ challenge.getOpponentColor() + " vs "
 							+ opponent.getUserName() + "("
 							+ opponent.getRating() + ")</a>";
 				}
 			};
-
 			request.setAttribute("__listIterator", challengeIterator);
 			setJspPath("/jsp/common/ListIteratorHandler.jsp");
-			*/
-
-			request.setAttribute("__message", listAll ? "Open Challenges" : "Challenges Specific To You");
-			request.setAttribute("__challenges", challenges);
-			setJspPath("/jsp/ListChallenges.jsp");
 		} finally {
 			manager.close();
 		}

@@ -9,18 +9,24 @@ private String header;
 public static final int SEGMENT_COUNT=10;
 private String callbackURL;
 private String footer;
+private String listString;
 public ListIterator(String header,List<E> list, int startIndex,String callbackURL,String footer) {
 	this.header=header;
 	this.list = list;
 	this.startIndex = startIndex;
 	this.callbackURL=callbackURL;
 	this.footer=footer;
+	listString=createListString();
 }
 
 public abstract String getRowLink(E element);
 
-
 public String getListString()
+{
+	return listString;
+}
+
+public String createListString()
 {
 	if(list.isEmpty())
 	{
@@ -35,7 +41,7 @@ public String getListString()
 	{
 		String link=getRowLink(e);
 		if(link!=null){
-		sb.append(link).append("<br/>");
+		sb.append(link).append("<br/><br/>");
 		}
 	}
 	sb.append(footer);
@@ -44,6 +50,10 @@ public String getListString()
 
 public String getHeader()
 {
+	if(list.size()==0)
+	{
+		return header;
+	}
 	return header+" ("+ startIndex+" to "+(getSegmentEnd())+" of "+list.size()+")";
 }
 

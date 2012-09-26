@@ -11,6 +11,7 @@ import java.net.URLEncoder;
 import java.util.Properties;
 import java.util.logging.Logger;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
@@ -21,12 +22,20 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import com.google.appengine.api.search.query.QueryParser.restrict_return;
+
 
 
 public class TxtWebApiUtil {
 	public static final String APP_KEY="c4a08eef-25b2-411d-8600-4573481762a7";
 	public static final String PUBLISHER_KEY="6c67576d-6e51-4880-b959-55eaf8e1a1da";
 	public static final String PUSH_MSG_URL="http://api.txtweb.com/v1/push";
+	public static final String VERIFY_MSG_URL="http://api.txtweb.com/v3/verify";
+	
+	public static final String TXTWEB_VERIFY_PARAM="txtweb-verifyid";
+	public static final String TXTWEB_MOBILE_PARAM="txtweb-mobile";
+	public static final String TXTWEB_MESSAGE_PARAM="txtweb-message";
+	public static final String TXTWEB_PROTOCOL_PARAM	="txtweb-protocol";
 public static Properties pushMessage(String mobileHash,String htmlMessage)
 {
 	if(mobileHash.startsWith("ai-"))
@@ -52,8 +61,9 @@ return new Properties();
 public static Properties getResponseAsProperties(String URL,Properties p) throws Exception 
 {
 	Document document =getDocument(URL,p);
-
-    return parseToProperties(document);
+    Properties properties= parseToProperties(document);
+    Logger.getLogger(TxtWebApiUtil.class.getName()).info(properties.toString());
+    return properties;
 }
 
 private static Properties parseToProperties(Document document) {
@@ -104,17 +114,35 @@ public static Document getDocument(String URL, Properties properties) throws SAX
     out.close();
     
     InputStream stream=connection.getInputStream();
-    Logger.getLogger(TxtWebApiUtil.class.getName()).info("\n"+connection.getResponseCode()+"\n");
-	BufferedReader br=new BufferedReader(new InputStreamReader(stream));
-	sb.setLength(0);
-	String s;
-	while((s=br.readLine())!=null)
+	return DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(stream);
+	
+}
+
+public static boolean isAuthenticatedRequest(HttpServletRequest request) throws Exception {
+	
+	try{
+	String mobileHash=request.getParameter(TXTWEB_MOBILE_PARAM);
+	String message=request.getParameter(TXTWEB_MESSAGE_PARAM);
+	String verifyId=request.getParameter(TXTWEB_VERIFY_PARAM);
+	String protocol=request.getParameter(TXTWEB_PROTOCOL_PARAM);
+	
+	if(mobileHash==null||verifyId==null||protocol==null)
 	{
-		sb.append(s);
+		return false;
 	}
-	Logger.getLogger(TxtWebApiUtil.class.getName()).info(sb.toString());
-	
-	return DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new StringInputStream(sb.toString()));
-	
+	String params=TXTWEB_MOBILE_PARAM+'='+URLEncoder.encode(mobileHash,"UTF-8")+'&'
+					+(message!=null?(TXTWEB_MESSAGE_PARAM+'='+URLEncoder.encode(message,"UTF-8")+'&'):"")
+					+TXTWEB_PROTOCOL_PARAM+'='+URLEncoder.encode(protocol,"UTF-8")+'&'
+					+TXTWEB_VERIFY_PARAM+'='+URLEncoder.encode(verifyId,"UTF-8");
+	Document doc=DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new URL(VERIFY_MSG_URL+'?'+params).openStream());
+	Properties properties=parseToProperties(doc);
+	Logger.getLogger(TxtWebApiUtil.class.getName()).info(properties.toString());
+	String value=properties.getProperty("txtWeb.status.code");
+	return "0".equals(value);
+	}
+	catch(Exception e)
+	{
+		throw new Exception("Unable to verify your request with txtweb",e);
+	}
 }
 }

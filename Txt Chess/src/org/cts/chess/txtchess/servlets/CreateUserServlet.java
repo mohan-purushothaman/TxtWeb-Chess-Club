@@ -1,6 +1,7 @@
 package org.cts.chess.txtchess.servlets;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.cts.chess.txtchess.api.ParameterDetector;
 import org.cts.chess.txtchess.api.ParameterHandlerServlet;
+import org.cts.chess.txtchess.api.TxtWebApiUtil;
 import org.cts.chess.txtchess.gae.EMF;
 import org.cts.chess.txtchess.gae.db.ChessUser;
 import org.cts.chess.txtchess.gae.db.DB_Util;
@@ -33,6 +35,7 @@ public class CreateUserServlet extends ParameterHandlerServlet {
 							.toLowerCase(), 1200,request.getParameter("txtweb-protocol")));
 					transaction.commit();
 					request.setAttribute("__message", "Currently Image Chessboard is your default board. Please change default board, if you are facing any issues ");
+					Logger.getLogger(CreateUserServlet.class.getName()).info("user created with username = "+message.get(0).toLowerCase());
 					}
 					catch(Exception e)
 					{
@@ -51,7 +54,8 @@ public class CreateUserServlet extends ParameterHandlerServlet {
 					request.setAttribute("__paramName", "User Name");
 					request.setAttribute(
 							"__message",
-							"given username is already been used by other user<br/> Please provide new UserName<br/>"+getParameterDetector().getParams().get(0).getHelpText());
+							message.get(0).toLowerCase()+" is already been used by other user<br/> Please provide new UserName<br/>"+getParameterDetector().getParams().get(0).getHelpText());
+					Logger.getLogger(CreateUserServlet.class.getName()).info("not able to create username(Already exist) = "+message.get(0).toLowerCase());
 				}
 			}
 			

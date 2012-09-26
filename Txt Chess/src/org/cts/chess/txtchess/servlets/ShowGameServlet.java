@@ -53,7 +53,7 @@ public class ShowGameServlet extends TxtWebServlet {
 					info = "Your Opponent Offered you a Draw, Respond to your draw offer before making a move";
 					drawString = "Accept Draw";
 					//drawMessage = "cancel";
-					rejectDrawSring="<br/><a href='./moveServlet?gameId="
+					rejectDrawSring="<br/><a href='/moveServlet?gameId="
 							+ game.getId() + "&txtweb-message=cancel'>Reject Draw Offer</a>";
 				} else {
 					info = "Your opponent yet to respond to your Draw offer";
@@ -72,13 +72,13 @@ public class ShowGameServlet extends TxtWebServlet {
 								);
 						request.setAttribute(
 								"__footer",
-								"<a href='./listMoves?gameId="
+								"<a href='/listMoves?gameId="
 										+ game.getId()
-										+ "'>Select Next Move from list</a><br/> <a href='./moveServlet?gameId="
+										+ "'>Select Next Move from list</a><br/> <a href='/moveServlet?gameId="
 										+ game.getId() + "&txtweb-message="
 										+ drawMessage + "'>" + drawString
 										+ "</a>" +rejectDrawSring+
-										"<br/><a href='./moveServlet?gameId="
+										"<br/><a href='/moveServlet?gameId="
 										+ game.getId()
 										+ "&txtweb-message=resign'>Resign or Abort</a>");
 					} else {
@@ -90,13 +90,13 @@ public class ShowGameServlet extends TxtWebServlet {
 												user));
 						request.setAttribute(
 								"__footer",
-								"<a href='./listMoves?gameId="
+								"<a href='/listMoves?gameId="
 										+ game.getId()
-										+ "'>Select Next Move from list</a><br/> <a href='./moveServlet?gameId="
+										+ "'>Select Next Move from list</a><br/> <a href='/moveServlet?gameId="
 										+ game.getId() + "&txtweb-message="
 										+ drawMessage + "'>" + drawString
 										+ "</a>" +rejectDrawSring+
-										"<br/><a href='./moveServlet?gameId="
+										"<br/><a href='/moveServlet?gameId="
 										+ game.getId()
 										+ "&txtweb-message=resign'>Resign or Abort</a>");
 					}
@@ -126,13 +126,13 @@ public class ShowGameServlet extends TxtWebServlet {
 				request.setAttribute("__endPoint", "moveServlet");
 				request.setAttribute(
 						"__footer",
-						"<a href='./listMoves?gameId="
+						"<a href='/listMoves?gameId="
 								+ game.getId()
-								+ "'>Select Next Move from list</a><br/> <a href='./moveServlet?gameId="
+								+ "'>Select Next Move from list</a><br/> <a href='/moveServlet?gameId="
 								+ game.getId() + "&txtweb-message="
 								+ drawMessage + "'>" + drawString
 								+ "</a>" +rejectDrawSring+
-								"<br/><a href='./moveServlet?gameId="
+								"<br/><a href='/moveServlet?gameId="
 								+ game.getId()
 								+ "&txtweb-message=resign'>Resign or Abort</a>");
 			}

@@ -28,7 +28,7 @@ public class TxtChessUtil {
 			String header = "";
 			String board = header;
 			String footer = header;
-			String form_link="./moveServlet";
+			String form_link="/moveServlet";
 			switch (game.getMovesCount()) {
 			case 0: {
 				if (game.getBlack().equals(destinationMobileHash)) {
@@ -66,7 +66,7 @@ public class TxtChessUtil {
 				board = getTxtChess(game.reCreateBoard(),manager.find(ChessUser.class, destinationMobileHash));
 				footer = chessBoard.getCurrentPlayerColor() == CoinColor.WHITE ? ("You will be notified when white performs a move")
 						: ("It's Your Turn, Reply with your Move<br/><form action='"+form_link+"'><input type='hidden' name='gameId' value='"+game.getId()+"' /> Your Move <input type='text' name='txtweb-message'/><input type='submit' value='submit'/></form>");
-				footer=footer+"<br/>"+"<a href='./moveServlet?gameId="+game.getId()+"&txtweb-message="+drawMessage+"'>"+drawString+"</a><br/><a href='./moveServlet?gameId="+game.getId()+"&txtweb-message=resign'>Resign or Abort</a>";
+				footer=footer+"<br/>"+"<a href='/moveServlet?gameId="+game.getId()+"&txtweb-message="+drawMessage+"'>"+drawString+"</a><br/><a href='/moveServlet?gameId="+game.getId()+"&txtweb-message=resign'>Resign or Abort</a>";
 				break;
 			}
 			}
@@ -77,10 +77,6 @@ public class TxtChessUtil {
 		}
 		return true;
 	}
-	
-	
-	
-	
 	public static String createMoveNotificationMessage(String headMessage,
 			String board,String footerMessage) {
 		StringBuilder sb = new StringBuilder();

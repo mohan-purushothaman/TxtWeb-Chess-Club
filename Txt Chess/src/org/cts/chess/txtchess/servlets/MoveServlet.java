@@ -87,11 +87,11 @@ public class MoveServlet extends TxtWebServlet {
 															manager.find(
 																	ChessUser.class,
 																	opponent)),
-													"<a href='./moveServlet?gameId="
+													"<a href='/moveServlet?gameId="
 															+ game.getId()
-															+ "&txtweb-message=draw'>Accept Draw offer</a><br/><a href='./moveServlet?gameId="
+															+ "&txtweb-message=draw'>Accept Draw offer</a><br/><a href='/moveServlet?gameId="
 															+ game.getId()
-															+ "&txtweb-message=cancel'>Reject Draw offer</a><br/><a href='./moveServlet?gameId="
+															+ "&txtweb-message=cancel'>Reject Draw offer</a><br/><a href='/moveServlet?gameId="
 															+ game.getId()
 															+ "&txtweb-message=resign'>Resign or Abort</a>"));
 					request.setAttribute("___message",
@@ -132,9 +132,9 @@ public class MoveServlet extends TxtWebServlet {
 															manager.find(
 																	ChessUser.class,
 																	opponent)),
-													"<a href='./moveServlet?gameId="
+													"<a href='/moveServlet?gameId="
 															+ game.getId()
-															+ "&txtweb-message=draw'>Accept / Offer Draw</a><br/><a href='./moveServlet?gameId="
+															+ "&txtweb-message=draw'>Accept / Offer Draw</a><br/><a href='/moveServlet?gameId="
 															+ game.getId()
 															+ "&txtweb-message=resign'>Resign or Abort</a>"));
 				}

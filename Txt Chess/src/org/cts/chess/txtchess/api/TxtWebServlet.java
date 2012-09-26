@@ -16,18 +16,30 @@ public abstract class TxtWebServlet extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws IOException {
-		String mobileHash = request.getParameter("txtweb-mobile");
-		
-		 if(mobileHash==null) { mobileHash="testingMobile1"; }
-		 
+		String mobileHash = request
+				.getParameter(TxtWebApiUtil.TXTWEB_MOBILE_PARAM);
 
-		String message = request.getParameter("txtweb-message");
-		if (message == null)
-			{message = "";}
-
-		message = message.trim();
-
+		// if(mobileHash==null) { mobileHash="testingMobile1"; }
 		try {
+			try {
+				if (!TxtWebApiUtil.isAuthenticatedRequest(request)) {
+					throw new Exception("Unauthorized Request");
+					/*
+					 * 403 error code would be exact for strict authorization
+					 * response.sendError(403); return; 
+					 */
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			String message = request
+					.getParameter(TxtWebApiUtil.TXTWEB_MESSAGE_PARAM);
+			if (message == null) {
+				message = "";
+			}
+
+			message = message.trim();
+
 			if (!authenticated(mobileHash, request, response)) {
 				return;
 			}
@@ -41,7 +53,7 @@ public abstract class TxtWebServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		try {
-			request.setAttribute("txtweb-mobile", mobileHash);
+			request.setAttribute(TxtWebApiUtil.TXTWEB_MOBILE_PARAM, mobileHash);
 			renderResponse(request, response);
 		} catch (ServletException e) {
 			e.printStackTrace();
